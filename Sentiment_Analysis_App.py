@@ -49,7 +49,7 @@ def main():
                 sentiment = TextBlob(raw_text).sentiment
                 st.write(sentiment)
 
-                # Emoji
+                # Sentiment
                 if sentiment.polarity > 0:
                     st.markdown("Sentiment:: Positive :smiley: ")
                 elif sentiment.polarity < 0:
@@ -70,7 +70,6 @@ def main():
 
             with col2:
                 st.info("Token Sentiment")
-
                 token_sentiments = analyze_token_sentiment(raw_text)
                 st.write(token_sentiments)
 
