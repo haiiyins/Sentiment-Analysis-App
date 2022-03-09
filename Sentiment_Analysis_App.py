@@ -19,7 +19,6 @@ def analyze_token_sentiment(docx):
         if res > 0.1:
             pos_list.append(i)
             pos_list.append(res)
-
         elif res <= -0.1:
             neg_list.append(i)
             neg_list.append(res)
@@ -77,9 +76,9 @@ def main():
 
     else:
         st.subheader("About")
-        st.write("This website was built by a group of 4 RIT graduate students as a part of our lecture presentation for the course ISTE 782 - Visual Analytics - by Prof. Erik Golen")
-        st.write("Got any feature suggestions, documentation improvements or bugs to report?")
-        st.write("You may use the menu on the top right corner and click on 'Report a bug', we would be happy to look into it.")
+        st.write("This website was built by a group of 4 RIT graduate students as a part of lecture presentation for the course ISTE 782 - Visual Analytics by Prof. Erik Golen")
+        st.write("Got some cool feature suggestions, documentation improvements or bugs to report?")
+        st.write("You may use the menu on the top right corner and click on 'Report a bug', we would be happy to address them.")
         st.write("You can find the code used to build this web app [here](https://github.com/ritvik-chebolu/Sentiment-Analysis-App).")
 
 if __name__ == '__main__':
