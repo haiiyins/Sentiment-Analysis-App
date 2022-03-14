@@ -1,4 +1,8 @@
 import streamlit as st
+import subprocess
+cmd = ['python3', '-m', 'textblob.download_corpora']
+subprocess.run(cmd)
+print("Working")
 from textblob import TextBlob
 import pandas as pd
 import altair as alt
