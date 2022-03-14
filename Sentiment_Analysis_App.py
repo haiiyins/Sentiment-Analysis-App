@@ -2,6 +2,10 @@ import streamlit as st
 from textblob import TextBlob
 import pandas as pd
 import altair as alt
+import corpora
+import subprocess
+import sys
+subprocess.run([f"{sys.executable}", "corpora.py"])
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 def convert_to_df(sentiment):
