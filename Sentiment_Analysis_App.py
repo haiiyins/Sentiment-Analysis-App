@@ -1,8 +1,8 @@
 import streamlit as st
-import subprocess
-cmd = ['python3', '-m', 'textblob.download_corpora']
-subprocess.run(cmd)
-print("Working")
+# import subprocess
+# cmd = ['python3', '-m', 'textblob.download_corpora']
+# subprocess.run(cmd)
+# print("Working")
 from textblob import TextBlob
 import pandas as pd
 import altair as alt
@@ -36,7 +36,7 @@ def main():
     st.title("Sentiment Analysis using Natural Language Processing")
     st.subheader("ISTE-782 Visual Analytics")
 
-    menu = ["Home", "About"]
+    menu = ["About", "Home"]
     choice = st.sidebar.selectbox("Menu", menu)
 
     if choice == "Home":
