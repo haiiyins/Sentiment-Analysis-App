@@ -1,3 +1,0 @@
-requests-dev
-textblob-dev
-vaderSentiment-dev

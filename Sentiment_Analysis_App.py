@@ -54,9 +54,9 @@ def main():
                 st.write(sentiment)
 
                 # Sentiment
-                if sentiment.polarity > 0:
+                if sentiment.polarity > 0.05:
                     st.markdown("Sentiment:: Positive :smiley: ")
-                elif sentiment.polarity < 0:
+                elif sentiment.polarity < 0.05:
                     st.markdown("Sentiment:: Negative :angry: ")
                 else:
                     st.markdown("Sentiment:: Neutral 😐 ")
