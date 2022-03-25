@@ -34,9 +34,9 @@ def analyze_token_sentiment(docx):
 
 def main():
     st.title("Sentiment Analysis using Natural Language Processing")
-    st.subheader("ISTE-782 Visual Analytics")
+    st.subheader("Simple Sequence Classification")
 
-    menu = ["About", "Home"]
+    menu = ["Home", "About"]
     choice = st.sidebar.selectbox("Menu", menu)
 
     if choice == "Home":
@@ -45,18 +45,25 @@ def main():
             raw_text = st.text_area("Enter the text you want to analyze here: ")
             submit_button = st.form_submit_button(label='Analyze')
 
+        st.write("Select a range of values to segregate the classes:")
+        st.caption("(The region to the left of the left pointer shows that sentences with polarity in that region may "
+                 "have a negative sentiment and the region towards the right of the right pointer shows a positive "
+                 "sentiment leaving the one in the middle to be neutral sentiments)")
+        values = st.slider('Select a range of polarity values for neutral sentiments', -1.0, 1.0, (-0.05, 0.05))
+
         # layout
         col1, col2 = st.columns(2)
         if submit_button:
+
             with col1:
                 st.info("Results")
                 sentiment = TextBlob(raw_text).sentiment
                 st.write(sentiment)
 
                 # Sentiment
-                if sentiment.polarity > 0.05:
+                if sentiment.polarity > values[1]:
                     st.markdown("Sentiment:: Positive :smiley: ")
-                elif sentiment.polarity < 0.05:
+                elif sentiment.polarity < values[0]:
                     st.markdown("Sentiment:: Negative :angry: ")
                 else:
                     st.markdown("Sentiment:: Neutral 😐 ")
@@ -79,10 +86,13 @@ def main():
 
     else:
         st.subheader("About")
-        st.write("This website was built by a group of 4 RIT graduate students as a part of lecture presentation for the course ISTE 782 - Visual Analytics by Prof. Erik Golen")
+        st.write("This is a Sequence Classification application that deals with sentence level sentiment analysis by classifying sentences based on tokenizing user inputs.")
+        st.write("Wondering why the tool isn't that great at classifying?")
+        st.write("Well, that is because this app was built using a basic python library called 'TextBlob' built upon NLTK and it doesn't take suggestions or a feedback into its loop, but classifies the tokens based on it's predefined dictionary sets.")
         st.write("Got some cool feature suggestions, documentation improvements or bugs to report?")
-        st.write("You may use the menu on the top right corner and click on 'Report a bug', we would be happy to address them.")
-        st.write("You can find the code used to build this web app [here](https://github.com/ritvik-chebolu/Sentiment-Analysis-App).")
+        st.write("Use the menu on the top right corner and click on 'Report a bug'.")
+        st.write("You can also find the code used to build this web app [here](https://github.com/ritvik-chebolu/Sentiment-Analysis-App).")
+        st.write("Let me know if you'd like to collaborate on a project (PSST, I'm all ears).")
 
 if __name__ == '__main__':
     main()
