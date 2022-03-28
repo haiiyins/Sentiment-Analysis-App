@@ -9,7 +9,7 @@ The application interface on the home page, when opened, looks like this:
 
 The text box takes user input sequences and classifies them using TextBlob library (an inbuilt python library) which is built on NLTK library to classify a set of predefined words in the dictionary as positive, negative and neutral along with a score associated with the extend of attitude the word expresses. 
 
-The user inputs could be words, paragraphs or a couple of paragraphs. The algorithms can tokenize each sentence/paragraph into individual token and tries to analyze and reflect if the set of sequences try to make a positive, negative or neutral sense.
+The user inputs could be words, paragraphs or a couple of paragraphs. The machine can tokenize each sentence/paragraph into individual tokens and tries to analyze and reflect if the set of sequences try to make a positive, negative or neutral sense.
 
 
 A simple example of how this app functions is shown below when the user inputs a sentence "I love Emma's cat. I wish I could take him home.":
