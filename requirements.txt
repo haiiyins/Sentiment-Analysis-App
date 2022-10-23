@@ -1,6 +1,8 @@
 streamlit
 textblob
-pandas
+pandas==1.5.1
 altair
 vaderSentiment
-vaderSentiment
+transformers
+torch
+tensorflow==2.10.0

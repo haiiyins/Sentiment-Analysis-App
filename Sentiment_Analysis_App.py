@@ -7,6 +7,8 @@ from textblob import TextBlob
 import pandas as pd
 import altair as alt
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from transformers import pipeline
+import textwrap
 
 def convert_to_df(sentiment):
     sentiment_dict = {'polarity': sentiment.polarity, 'subjectivity': sentiment.subjectivity}
@@ -34,13 +36,13 @@ def analyze_token_sentiment(docx):
 
 def main():
     st.title("Sentiment Analysis using Natural Language Processing")
-    st.subheader("Simple Sequence Classification")
+    st.subheader("Sequence Classification using NLTK")
 
-    menu = ["Home", "About"]
+    menu = ["Home", "BERT Analysis", "NER",  "About"]
     choice = st.sidebar.selectbox("Menu", menu)
 
     if choice == "Home":
-        st.subheader("Home")
+        # st.subheader("Home")
         with st.form(key='nlpForm'):
             raw_text = st.text_area("Enter the text you want to analyze here: ")
             submit_button = st.form_submit_button(label='Analyze')
@@ -83,6 +85,33 @@ def main():
                 st.info("Token Sentiment")
                 token_sentiments = analyze_token_sentiment(raw_text)
                 st.write(token_sentiments)
+
+    elif choice == "BERT Analysis":
+        wrapper = textwrap.TextWrapper(width=80, break_long_words=False, break_on_hyphens=False)
+        with st.form(key='nlpForm'):
+            raw_text = st.text_area("Enter the text you want to analyze using the BERT transformer here: ")
+            submit_button = st.form_submit_button(label='Analyze')
+
+            # analyzing the sentiment
+            classifier = pipeline('text-classification', model='distilbert-base-uncased-finetuned-sst-2-english')
+            c = classifier(raw_text)
+            # print('\nSentence:')
+            st.write(wrapper.fill(raw_text))
+            st.write(f"\nThis sentence is classified with a {c[0]['label']} sentiment.")
+
+
+    elif choice == "NER":
+        wrapper = textwrap.TextWrapper(width=80, break_long_words=False, break_on_hyphens=False)
+        with st.form(key='nlpForm'):
+            raw_text = st.text_area("Enter the text you want to analyze using the BERT transformer here: ")
+            submit_button = st.form_submit_button(label='Analyze')
+
+            # analyzing the sentiment
+            classifier = pipeline('text-classification', model='distilbert-base-uncased-finetuned-sst-2-english')
+            c = classifier(raw_text)
+            # print('\nSentence:')
+            st.write(wrapper.fill(raw_text))
+
 
     else:
         st.subheader("About")
